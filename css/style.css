@@ -3,3 +3,122 @@
     margin: 0;
     padding: 0;
 }
+
+
+
+#grad {
+    background-image: linear-gradient(green 150px, gray 50px);
+    height: calc(100vh - 30px);
+}
+
+.my-container {
+    width: 1400px;
+    height: calc(100vh - 60px);
+    background-color: purple;
+    margin: 30px auto;
+}
+
+.sidebar-container {
+    width: calc(100% / 3);
+    background-color: aqua;
+    height: 100%;
+}
+
+.message-container {
+    width: calc(100% / 3 * 2);
+    background-color: blue;
+    height: 100%;
+}
+
+.my-header {
+    background-color: gray;
+    height: 90px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-header {
+    background-color: gray;
+    height: 90px;
+    width: 100%;
+    border: 1px solid lightgray;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-box {
+    background-image: url(../img/mine.jpg);
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+    background-color: bisque;
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.img-myprofile {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
+
+.my-profile {
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button-myheader {
+    margin-right: 20px;
+    gap: 15px;
+}
+
+.img-message {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
+
+.notify-banner {
+    height: 100px;
+    background-color: lightblue;
+    align-items: center;
+}
+
+
+.fa-bell-slash {
+    color: lightblue;
+}
+
+
+.bell-container {
+    border-radius: 50%;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.active-notify {
+    text-decoration: underline;
+    font-size: smaller;
+}
+
+
+.contact-avatar {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
