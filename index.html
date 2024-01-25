@@ -25,47 +25,48 @@
 </head>
 
 <body id="grad">
-    <div class="my-container d-flex flex-row">
-        <!--Sidebar -->
-        <div class="sidebar-container d-flex flex-column">
-            <header class="my-header d-flex">
-                <div class="my-profile d-flex">
-                    <img class="img-myprofile" src="img/avatar_io.jpg" alt="my profile">
-                    <span><strong>Sofia</strong></span>
+    <div id="root">
+        <div class="my-container d-flex flex-row">
+            <!--Sidebar -->
+            <div class="sidebar-container d-flex flex-column">
+                <header class="my-header d-flex">
+                    <div class="my-profile d-flex">
+                        <img class="img-myprofile" :src="getAvatarUrl( user)" alt="my profile">
+                        <span><strong>Sofia</strong></span>
+                    </div>
+                    <div class="button-myheader d-flex">
+                        <span><i class="fa-solid fa-circle-notch"></i></span>
+                        <span><i class="fa-solid fa-message"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </header>
+                <!--Notification Enablement Section  -->
+                <div class="notify-banner d-flex">
+                    <span class="bell-container text-center "><i class="fa-solid fa-bell-slash"></i></span>
+                    <div class="notify-section ms-3 d-flex flex-column">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <span class="active-notify">Attiva notifiche desktop</span>
+                    </div>
                 </div>
-                <div class="button-myheader d-flex">
-                    <span><i class="fa-solid fa-circle-notch"></i></span>
-                    <span><i class="fa-solid fa-message"></i></span>
-                    <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                <div class="search-bar">
+                    <nav class="navbar bg-body-tertiary">
+                        <form class="container-fluid">
+                            <div class="input-group">
+                                <span class="input-group-text" id="search bar"><i class="fa-solid fa-search"></i></span>
+                                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                            </div>
+                        </form>
+                    </nav>
                 </div>
-            </header>
-            <!--Notification Enablement Section  -->
-            <div class="notify-banner d-flex">
-                <span class="bell-container text-center "><i class="fa-solid fa-bell-slash"></i></span>
-                <div class="notify-section ms-3 d-flex flex-column">
-                    <span>Ricevi notifiche di nuovi messaggi</span>
-                    <span class="active-notify">Attiva notifiche desktop</span>
-                </div>
-            </div>
-            <div class="search-bar">
-                <nav class="navbar bg-body-tertiary">
-                    <form class="container-fluid">
-                        <div class="input-group">
-                            <span class="input-group-text" id="search bar"><i class="fa-solid fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
-                        </div>
-                    </form>
-                </nav>
-            </div>
-            <div class="sidebar">
-                <div id="root">
+                <div class="sidebar">
+
                     <ul>
                         <li v-for="contact in contacts" :key="contact.id"
-                            class="d-flex align-items-center justify-content-between">
+                            class="d-flex align-items-center justify-content-between"
+                            @click="selectContact(contact.id)">
                             <!-- Contacts Name and Image -->
                             <div class="d-flex">
-                                <img class="contact-avatar" :src="'img/avatar_' + contact.id + '.jpg'"
-                                    alt="Contacts Image">
+                                <img class="contact-avatar" :src="getAvatarUrl(contact)" alt="{{ contact.name }}">
                                 <div class="d-flex flex-column">
                                     <span>{{ contact.name }}</span>
                                     <span class="smaller">Ultimo messaggio inviato</span>
@@ -74,52 +75,52 @@
                             <span>12:00</span>
                         </li>
                     </ul>
+
                 </div>
             </div>
-        </div>
-        <!-- Active Message Section -->
-        <div class="message-container d-flex flex-column">
-            <!-- Header -->
-            <header class="message-header d-flex">
-                <div class="my-profile d-flex">
-                    <img class="img-message" src="img/avatar_1.jpg" alt="my profile">
-                    <div class="friend-message-section d-flex flex-column">
-                        <span><strong>Michele</strong></span>
-                        <span>Ultimo accesso oggi alle 12:00</span>
+            <!-- Active Message Section -->
+            <div class="message-container d-flex flex-column">
+                <!-- Header -->
+                <header class="message-header d-flex">
+                    <div class="my-profile d-flex">
+                        <!-- Current Active Contact -->
+                        <img class="img-message" :src="getAvatarUrl(currentContact)" alt="my profile">
+                        <div class="friend-message-section d-flex flex-column">
+                            <span><strong>{{currentContact.name}}</strong></span>
+                            <span>Ultimo accesso oggi alle 12:00</span>
+                        </div>
+                    </div>
+                    <!-- Header Button -->
+                    <div class="button-myheader d-flex">
+                        <span><i class="fa-solid fa-search"></i></span>
+                        <span><i class="fa-solid fa-paperclip"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </header>
+                <!-- Current Messages -->
+                <div class="message-box d-flex flex-column">
+                    <div class="d-flex w-100" v-for="message in currentContact.messages" :key="message.id">
+                        <div v-if="message.status === 'sent'" class="message-sent mt-3">
+                            <span>{{ message.text }}</span>
+                            <span class="time">{{ message.date }}</span>
+                        </div>
+                        <div v-else class="message-received mt-3">
+                            <span>{{ message.text }}</span>
+                            <span class="time">{{ message.date }}</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Header Button -->
-                <div class="button-myheader d-flex">
-                    <span><i class="fa-solid fa-search"></i></span>
-                    <span><i class="fa-solid fa-paperclip"></i></span>
-                    <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
-                </div>
-            </header>
-            <!-- Messages -->
-            <div class="message-box d-flex flex-column">
-                <div class="message-sent mt-5">
-                    <span>Hai portato a spasso il cane?</span>
-                    <span class="time">15:30</span>
-                </div>
-                <div class="message-sent">
-                    <span>Ricordati di stendere i panni</span>
-                    <span class="time">15:50</span>
-                </div>
-                <div class="message-received">
-                    <span>Tutto fatto!</span>
-                    <span class="time">16:15</span>
-                </div>
-            </div>
-            <!-- Section Writing Messages -->
-            <div class="message-footer d-flex">
-                <div>
-                    <span><i class="fa-solid fa-smile ms-4"></i></span>
-                </div>
-                <!-- Write Message -->
-                <input class="form-control  write-message" type="text" placeholder="Scrivi un messaggio">
-                <!-- Send Vocal Message -->
-                <div>
-                    <span><i class="fa-solid fa-microphone me-4"></i></span>
+                <!-- Section Writing Messages -->
+                <div class="message-footer d-flex">
+                    <div>
+                        <span><i class="fa-solid fa-smile ms-4"></i></span>
+                    </div>
+                    <!-- Write Message -->
+                    <input class="form-control  write-message" type="text" placeholder="Scrivi un messaggio">
+                    <!-- Send Vocal Message -->
+                    <div>
+                        <span><i class="fa-solid fa-microphone me-4"></i></span>
+                    </div>
                 </div>
             </div>
         </div>

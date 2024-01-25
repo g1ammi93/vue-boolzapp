@@ -152,11 +152,11 @@ img {
 .message-sent {
     display: inline-block;
     background-color: rgb(220 248 198);
-    width: 300px;
+    width: 400px;
     height: 50px;
     border-radius: 8px;
     color: black;
-    margin: 10px 80px 5px 0px;
+    margin: 10px 0px 5px 450px;
     padding: 10px;
     position: relative;
 }
@@ -165,7 +165,7 @@ img {
     display: inline-block;
     background-color: var(--main-gray);
     height: 50px;
-    width: 300px;
+    width: 400px;
     border-radius: 8px;
     align-self: flex-start;
     color: black;
@@ -207,7 +207,7 @@ ul {
 li {
     list-style-type: none;
     min-height: 70px;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .smaller {

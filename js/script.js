@@ -1,15 +1,24 @@
-const { createApp } = Vue;
+const { user, contacts } = data;
 
-const app = createApp({
-    name: 'Boolzapp',
+const app = Vue.createApp({
     data() {
         return {
-            data
+            user,
+            contacts,
+            activeId: 1
         }
     },
     computed: {
-        contacts() {
-            return this.data.contacts
+        currentContact() {
+            return this.contacts.find(contact => contact.id === this.activeId);
+        }
+    },
+    methods: {
+        selectContact(contactId) {
+            this.activeId = contactId;
+        },
+        getAvatarUrl({ avatar }) {
+            return `img/avatar${avatar}.jpg`;
         }
     }
 });
