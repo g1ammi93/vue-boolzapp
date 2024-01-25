@@ -4,19 +4,34 @@
     padding: 0;
 }
 
+/* Root */
 
+:root {
+    --main-gray: rgb(236, 229, 221);
+}
+
+/* Background */
 
 #grad {
-    background-image: linear-gradient(green 150px, gray 50px);
+    background-image: linear-gradient(rgb(37 211 102) 150px, gray 50px);
     height: calc(100vh - 30px);
 }
+
+/* Generics */
+i,
+img {
+    cursor: pointer;
+}
+
+/* General Container */
 
 .my-container {
     width: 1400px;
     height: calc(100vh - 60px);
-    background-color: purple;
     margin: 30px auto;
 }
+
+/* Sidebar */
 
 .sidebar-container {
     width: calc(100% / 3);
@@ -24,51 +39,19 @@
     height: 100%;
 }
 
-.message-container {
-    width: calc(100% / 3 * 2);
-    background-color: blue;
-    height: 100%;
-}
-
 .my-header {
-    background-color: gray;
-    height: 90px;
+    background-color: var(--main-gray);
+    min-height: 75px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-}
-
-.message-header {
-    background-color: gray;
-    height: 90px;
-    width: 100%;
-    border: 1px solid lightgray;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.message-box {
-    background-image: url(../img/mine.jpg);
-    height: 100%;
-    width: 100%;
 }
 
 .sidebar {
-    background-color: bisque;
+    background-color: var(--main-gray);
     height: 100%;
     width: 100%;
-}
-
-img {
-    width: 100%;
-    display: block;
-}
-
-.img-myprofile {
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    margin-left: 5px;
+    overflow-y: scroll;
 }
 
 .my-profile {
@@ -82,12 +65,52 @@ img {
     gap: 15px;
 }
 
+/* Message Section */
+
+.message-header {
+    background-color: var(--main-gray);
+    min-height: 75px;
+    width: 100%;
+    border: 1px solid lightgray;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-container {
+    width: calc(100% / 3 * 2);
+    height: 100%;
+}
+
+.message-box {
+    background-image: url(../img/mine.jpg);
+    height: 100%;
+    width: 100%;
+    align-items: end;
+    overflow-y: scroll;
+}
+
+/* Image */
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.img-myprofile {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
+
 .img-message {
     border-radius: 50px;
     width: 50px;
     height: 50px;
     margin-left: 5px;
 }
+
+/* Notification Enablement Section */
 
 .notify-banner {
     height: 100px;
@@ -103,10 +126,10 @@ img {
 
 .bell-container {
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--main-gray);
     height: 50px;
     width: 50px;
-    padding: 10px;
+    padding: 12px;
     margin-left: 10px;
 }
 
@@ -115,10 +138,74 @@ img {
     font-size: smaller;
 }
 
+/* Contact Section */
 
 .contact-avatar {
     border-radius: 50px;
     width: 50px;
     height: 50px;
     margin-left: 5px;
+}
+
+/* Messages */
+
+.message-sent {
+    display: inline-block;
+    background-color: rgb(220 248 198);
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    color: black;
+    margin: 10px 80px 5px 0px;
+    padding: 10px;
+    position: relative;
+}
+
+.message-received {
+    display: inline-block;
+    background-color: var(--main-gray);
+    height: 50px;
+    width: 300px;
+    border-radius: 8px;
+    align-self: flex-start;
+    color: black;
+    margin: 10px 0px 5px 80px;
+    padding: 10px;
+    position: relative;
+}
+
+.time {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    color: black;
+}
+
+/* Write Message */
+
+.write-message {
+    width: 90%;
+    margin: 0 20px;
+}
+
+.message-footer {
+    background-color: var(--main-gray);
+    height: 90px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Contact Section */
+
+ul {
+    margin-left: 5px;
+    padding: 3px;
+}
+
+li {
+    list-style-type: none;
+    min-height: 70px;
+    border: 1px solid white;
 }

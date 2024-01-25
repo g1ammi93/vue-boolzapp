@@ -20,6 +20,7 @@
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- Javascript -->
+    <script src="js/data.js"></script>
     <script defer src="js/script.js"></script>
 </head>
 
@@ -57,13 +58,28 @@
                 </nav>
             </div>
             <div class="sidebar">
-                <ul>
-                    <li><img class="contact-avatar" src="img/avatar_1.jpg" alt=""><span>Michele</span></li>
-                </ul>
+                <div id="root">
+                    <ul>
+                        <li v-for="contact in contacts" :key="contact.id"
+                            class="d-flex align-items-center justify-content-between">
+                            <!-- Visualizzazione di nome e immagine di ogni contatto -->
+                            <div class="d-flex">
+                                <img class="contact-avatar" :src="'img/avatar_' + contact.id + '.jpg'"
+                                    alt="Contacts Image">
+                                <div class="d-flex flex-column">
+                                    <span>{{ contact.name }}</span>
+                                    <span>Ultimo messaggio inviato</span>
+                                </div>
+                            </div>
+                            <span>12:00</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- Active Message Section -->
         <div class="message-container d-flex flex-column">
+            <!-- Header -->
             <header class="message-header d-flex">
                 <div class="my-profile d-flex">
                     <img class="img-message" src="img/avatar_1.jpg" alt="my profile">
@@ -72,17 +88,42 @@
                         <span>Ultimo accesso oggi alle 12:00</span>
                     </div>
                 </div>
+                <!-- Header Button -->
                 <div class="button-myheader d-flex">
                     <span><i class="fa-solid fa-search"></i></span>
                     <span><i class="fa-solid fa-paperclip"></i></span>
                     <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
                 </div>
             </header>
-            <div class="message-box"></div>
+            <!-- Messages -->
+            <div class="message-box d-flex flex-column">
+                <div class="message-sent mt-5">
+                    <span>Hai portato a spasso il cane?</span>
+                    <span class="time">15:30</span>
+                </div>
+                <div class="message-sent">
+                    <span>Ricordati di stendere i panni</span>
+                    <span class="time">15:50</span>
+                </div>
+                <div class="message-received">
+                    <span>Tutto fatto!</span>
+                    <span class="time">16:15</span>
+                </div>
+            </div>
+            <!-- Section Writing Messages -->
+            <div class="message-footer d-flex">
+                <div>
+                    <span><i class="fa-solid fa-smile ms-4"></i></span>
+                </div>
+                <!-- Write Message -->
+                <input class="form-control  write-message" type="text" placeholder="Scrivi un messaggio">
+                <!-- Send Vocal Message -->
+                <div>
+                    <span><i class="fa-solid fa-microphone me-4"></i></span>
+                </div>
+            </div>
         </div>
     </div>
-
-
 </body>
 
 </html>
