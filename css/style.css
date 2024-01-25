@@ -209,3 +209,8 @@ li {
     min-height: 70px;
     border: 1px solid white;
 }
+
+.smaller {
+    font-size: smaller;
+    color: gray;
+}
